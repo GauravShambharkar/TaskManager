@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+body {
+  font-family: geist;
+}
+
+.allcenter {
+  @apply flex justify-center items-center
+}
+
+.xcenter {
+  @apply flex justify-center
+}
+
+.ycenter {
+  @apply flex items-center
+}
+
+.xend {
+  @apply flex justify-end
+}
+
+.yend {
+  @apply flex items-end
+}
+
+.tighter {
+  @apply tracking-tighter
+}
