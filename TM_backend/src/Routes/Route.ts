@@ -6,7 +6,7 @@ import { deleteTaskController } from "../Controllers/deleteTaskController.js";
 
 const taskRoute = express.Router();
 
-taskRoute.get("/task/:id", readTaskController);
+taskRoute.get("/task/:email", readTaskController);
 taskRoute.post("/createTask", createTaskController);
 taskRoute.put("/updateTask/:id", updateTaskController);
 taskRoute.delete("/deleteTask/:id", deleteTaskController);
