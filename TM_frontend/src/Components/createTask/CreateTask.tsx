@@ -2,7 +2,13 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "sonner";
 
-const CreateTask = ({ setisclicked, isclicked, editingTask, setEditingTask }: any) => {
+const CreateTask = ({
+  setisclicked,
+  isclicked,
+  setReload,
+  editingTask,
+  setEditingTask,
+}: any) => {
   const [formData, setFormData] = useState({
     email: "test@gmail.com",
     title: "",
@@ -34,10 +40,18 @@ const CreateTask = ({ setisclicked, isclicked, editingTask, setEditingTask }: an
           `http://localhost:4000/app/updateTask/${editingTask._id}`,
           formData
         );
-        if (res.data.ok) toast.success("Task updated successfully!");
+        if (res.data.ok) {
+          toast.success("Task updated successfully!");
+        }
       } else {
-        const res = await axios.post("http://localhost:4000/app/createTask", formData);
-        if (res.data.ok) toast.success("Task created successfully!");
+        const res = await axios.post(
+          "http://localhost:4000/app/createTask",
+          formData
+        );
+        if (res.data.ok) {
+          setReload(true);
+          toast.success("Task created successfully!");
+        }
       }
       setisclicked(false);
       setEditingTask(null);
@@ -64,7 +78,9 @@ const CreateTask = ({ setisclicked, isclicked, editingTask, setEditingTask }: an
       />
       <textarea
         value={formData.description}
-        onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+        onChange={(e) =>
+          setFormData({ ...formData, description: e.target.value })
+        }
         placeholder="Description"
         className="border border-[#252c3b] p-2 rounded-md"
       />
@@ -85,7 +101,10 @@ const CreateTask = ({ setisclicked, isclicked, editingTask, setEditingTask }: an
       />
 
       <div className="flex gap-2">
-        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md">
+        <button
+          type="submit"
+          className="bg-blue-500 text-white px-4 py-2 rounded-md"
+        >
           {editingTask ? "Update Task" : "Create Task"}
         </button>
         <button

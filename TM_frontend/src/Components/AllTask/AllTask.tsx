@@ -29,7 +29,9 @@ const AllTask: React.FC<AllTaskProps> = ({
 }) => {
   async function deleteTask(id: string) {
     try {
-      const res = await axios.delete(`http://localhost:4000/app/deleteTask/${id}`);
+      const res = await axios.delete(
+        `http://localhost:4000/app/deleteTask/${id}`
+      );
       if (res.data.ok) {
         setdeleted(true);
         toast.success("Task deleted successfully");
@@ -42,18 +44,25 @@ const AllTask: React.FC<AllTaskProps> = ({
   return (
     <div className="flex p-3 justify-between items-center rounded-md">
       <div className="w-full">
-        <p><strong>Title:</strong> {item.title}</p>
-        <p><strong>Description:</strong> {item.description}</p>
-        <p><strong>Status:</strong> {item.status}</p>
-        <p><strong>Due:</strong> {item.dueDate.split("T")[0]}</p>
+        <p>
+          <strong>Title:</strong> {item.title}
+        </p>
+        <p>
+          <strong>Description:</strong> {item.description}
+        </p>
+        <p>
+          <strong>Status:</strong> {item.status}
+        </p>
+        <p>
+          <strong>Due:</strong> {item.dueDate.split("T")[0]}
+        </p>
       </div>
 
       <div className="flex gap-3">
-        {/* 🖊 Edit */}
         <FaPen
           onClick={() => {
             setEditingTask(item);
-            setisclicked(true); 
+            setisclicked(true);
           }}
           className="text-blue-400 hover:text-blue-600 cursor-pointer text-lg"
         />

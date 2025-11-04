@@ -8,6 +8,7 @@ import { LuNotebookPen } from "react-icons/lu";
 const GetStarted = () => {
   const tasks = useStore((state: any) => state.tasks);
   const addTask = useStore((state: any) => state.addTask);
+  const [reload, setReload] = useState(false);
 
   const [isclicked, setisclicked] = useState(false);
   const [deleted, setdeleted] = useState(false);
@@ -27,7 +28,7 @@ const GetStarted = () => {
 
   useEffect(() => {
     fetchTasks();
-  }, []);
+  }, [reload]);
 
   useEffect(() => {
     if (deleted) {
@@ -82,6 +83,7 @@ const GetStarted = () => {
             isclicked={isclicked}
             editingTask={editingTask}
             setEditingTask={setEditingTask}
+            setReload={setReload}
           />
         </div>
       )}
