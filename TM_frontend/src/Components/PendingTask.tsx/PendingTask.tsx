@@ -28,7 +28,7 @@ const PendingTask: React.FC<ItemProp> = ({ item }) => {
   }
 
   return (
-    <div className="border p-2">
+    <div className="p-2">
       <div className="flex gap-2">
         <label className="font-semibold">Title:</label>
         <h1>{item.title}</h1>

@@ -86,6 +86,7 @@ const CreateTask = ({
         placeholder="Description"
         className="border border-[#252c3b] p-2 rounded-md"
       />
+
       <select
         value={formData.priority}
         onChange={(e) => setFormData({ ...formData, priority: e.target.value })}
@@ -95,6 +96,19 @@ const CreateTask = ({
         <option value="medium">Medium</option>
         <option value="low">Low</option>
       </select>
+
+      <select
+        value={formData.status}
+        onChange={(e) => setFormData({ ...formData, status: e.target.value })}
+        className="border border-[#252c3b] p-2 rounded-md"
+      >
+        <option value="pendning" defaultValue="pendning">
+          pendning
+        </option>
+        <option value="completed">completed</option>
+        <option value="in-progress">in-progress</option>
+      </select>
+
       <input
         type="date"
         value={formData.dueDate}

@@ -51,6 +51,9 @@ const AllTask: React.FC<AllTaskProps> = ({
           <strong>Description:</strong> {item.description}
         </p>
         <p>
+          <strong>Priority:</strong> {item.priority}
+        </p>
+        <p>
           <strong>Status:</strong> {item.status}
         </p>
         <p>
