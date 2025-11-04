@@ -5,7 +5,8 @@ import { toast } from "sonner";
 const CreateTask = ({
   setisclicked,
   isclicked,
-  setReload,
+  setReloadOnTaskCreate,
+  setreloadOnTaskUpdate,
   editingTask,
   setEditingTask,
 }: any) => {
@@ -41,6 +42,7 @@ const CreateTask = ({
           formData
         );
         if (res.data.ok) {
+          setreloadOnTaskUpdate(true);
           toast.success("Task updated successfully!");
         }
       } else {
@@ -49,7 +51,7 @@ const CreateTask = ({
           formData
         );
         if (res.data.ok) {
-          setReload(true);
+          setReloadOnTaskCreate(true);
           toast.success("Task created successfully!");
         }
       }

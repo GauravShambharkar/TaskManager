@@ -8,7 +8,8 @@ import { LuNotebookPen } from "react-icons/lu";
 const GetStarted = () => {
   const tasks = useStore((state: any) => state.tasks);
   const addTask = useStore((state: any) => state.addTask);
-  const [reload, setReload] = useState(false);
+  const [reloadOnTaskCreate, setReloadOnTaskCreate] = useState(false);
+  const [reloadOnTaskUpdate, setreloadOnTaskUpdate] = useState(false);
 
   const [isclicked, setisclicked] = useState(false);
   const [deleted, setdeleted] = useState(false);
@@ -28,14 +29,21 @@ const GetStarted = () => {
 
   useEffect(() => {
     fetchTasks();
-  }, [reload]);
+  }, [reloadOnTaskCreate, reloadOnTaskUpdate]);
 
   useEffect(() => {
-    if (deleted) {
+    if (deleted || editingTask ) {
       fetchTasks();
       setdeleted(false);
     }
   }, [deleted]);
+
+  // useEffect(()=>{
+  //   if(){
+
+  //   }
+
+  // },[setreloadOnTaskUpdate])
 
   const filteredTasks =
     priorityFilter === "all"
@@ -56,7 +64,7 @@ const GetStarted = () => {
             setisclicked(true);
             setEditingTask(null);
           }}
-          className="bg-blue-500 hover:bg-blue-400 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-all"
+          className="bg-blue-500  hover:bg-blue-400 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-all"
         >
           <LuNotebookPen className="text-lg" />
           Create Task
@@ -83,7 +91,8 @@ const GetStarted = () => {
             isclicked={isclicked}
             editingTask={editingTask}
             setEditingTask={setEditingTask}
-            setReload={setReload}
+            setReloadOnTaskCreate={setReloadOnTaskCreate}
+            setreloadOnTaskUpdate={setreloadOnTaskUpdate}
           />
         </div>
       )}
