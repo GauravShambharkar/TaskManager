@@ -18,9 +18,7 @@ const GetStarted = () => {
 
   const fetchTasks = async () => {
     try {
-      const res = await axios.get(
-        "http://localhost:4000/app/task/test@gmail.com"
-      );
+      const res = await axios.get(`${import.meta.env.VITE_GET_TASK_API_ENDPOINT}`);
       addTask(res.data.task);
     } catch (error: any) {
       console.log("Server error:", error.message);
@@ -32,7 +30,7 @@ const GetStarted = () => {
   }, [reloadOnTaskCreate, reloadOnTaskUpdate]);
 
   useEffect(() => {
-    if (deleted || editingTask ) {
+    if (deleted || editingTask) {
       fetchTasks();
       setdeleted(false);
     }

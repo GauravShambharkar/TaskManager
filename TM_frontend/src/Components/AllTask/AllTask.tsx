@@ -30,7 +30,7 @@ const AllTask: React.FC<AllTaskProps> = ({
   async function deleteTask(id: string) {
     try {
       const res = await axios.delete(
-        `http://localhost:4000/app/deleteTask/${id}`
+        `${import.meta.env.VITE_DELETE_TASK_API_ENDPOINT}/${id}`
       );
       if (res.data.ok) {
         setdeleted(true);

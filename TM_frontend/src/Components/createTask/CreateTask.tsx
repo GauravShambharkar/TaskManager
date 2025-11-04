@@ -38,7 +38,7 @@ const CreateTask = ({
     try {
       if (editingTask) {
         const res = await axios.put(
-          `http://localhost:4000/app/updateTask/${editingTask._id}`,
+          `${import.meta.env.VITE_UPDATE_TASK_API_ENDPOINT}/${editingTask._id}`,
           formData
         );
         if (res.data.ok) {
@@ -47,7 +47,7 @@ const CreateTask = ({
         }
       } else {
         const res = await axios.post(
-          "http://localhost:4000/app/createTask",
+          `${import.meta.env.VITE_CREATE_TASK_API_ENDPOINT}`,
           formData
         );
         if (res.data.ok) {
